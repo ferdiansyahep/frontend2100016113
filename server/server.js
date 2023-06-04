@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -6,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost/perpustakaan', {
+mongoose.connect('mongodb+srv://ferdiansyah2100016113:smaroe87@cluster0.iagpkxn.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -56,7 +58,7 @@ app.post('/api/books', async (req, res) => {
 app.delete('/api/books/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    await Book.findOneAndDelete({ id });
+    await Book.findOneAndDelete({ _id: id });
     res.json({ message: 'Book deleted successfully' });
   } catch (error) {
     console.log(error);

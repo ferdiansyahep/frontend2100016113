@@ -56,10 +56,10 @@ const BookList = () => {
         {books.length > 0 ? (
           <ListGroup>
             {books.map((book) => (
-              <ListGroup.Item key={book.id}>
+              <ListGroup.Item key={book._id}>
                 <Row className="align-items-center">
                   <Col xs={12} md={4}>
-                    <strong>ID:</strong> {book.id}
+                    <strong>ID:</strong> {book._id}
                   </Col>
                   <Col xs={12} md={4}>
                     <strong>Judul:</strong> {book.title}
@@ -68,7 +68,7 @@ const BookList = () => {
                     <strong>Penulis:</strong> {book.author}
                   </Col>
                   <Col xs={12} md={1}>
-                    <Button variant="danger" onClick={() => handleDelete(book.id)}>Hapus</Button>
+                    <Button variant="danger" onClick={() => handleDelete(book._id)}>Hapus</Button>
                   </Col>
                 </Row>
               </ListGroup.Item>
