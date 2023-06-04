@@ -12,7 +12,7 @@ const App = () => {
   const [registeredUsers, setRegisteredUsers] = useState([]);
 
   const handleLogin = (username, password) => {
-    const user = registeredUsers.find((user) => user.username.value == username || user.password.value == password);
+    const user = registeredUsers.find((user) => user.username.value === username || user.password.value === password);
 
     if (user) {
       alert('Welcome');
