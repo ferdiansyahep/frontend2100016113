@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Form, Button, Card, ListGroup, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -6,11 +6,7 @@ const BookList = () => {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState('');
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const response = await axios.get('http://localhost:3001/api/books', {
         params: { search },
@@ -19,7 +15,11 @@ const BookList = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [search]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const handleDelete = async (id) => {
     try {
